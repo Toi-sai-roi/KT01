@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
 
       bottle:{
         width:"100%",
-        height:"100%",
+        height:"74%",
         resizeMode:"contain"
       },
 
