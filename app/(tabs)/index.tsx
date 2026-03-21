@@ -48,10 +48,10 @@ export default function HomeScreen() {
           <View key={item.label} style={styles.insightCard}>
           <ImageBackground
             source={item.cardBg}
-            style={{ flex: 1 }} // Để ảnh nền phủ kín card
+            style={{ flex: 1 }} 
           >
             <TouchableOpacity
-              style={styles.insightContent} // Style mới có padding
+              style={styles.insightContent} 
               onPress={() => handleInsightPress(item.label)}
               activeOpacity={0.75}
             >
@@ -109,14 +109,14 @@ const styles = StyleSheet.create({
   grid: {
     flexDirection: "row",
     flexWrap: "wrap",
-    justifyContent: "space-between", // Quay lại dùng cái này để dạt đều 2 mép
+    justifyContent: "space-between", 
     width: "100%",
   },
   insightCard: {
-    width: "48%", // Đảm bảo 2 card cộng lại < 100% để không bị nhảy hàng
+    width: "48%", 
     marginBottom: 15,
     borderRadius: 16,
-    overflow: "hidden", // Để bo góc cho cả ảnh nền
+    overflow: "hidden", 
     // Shadow cho iOS
     shadowColor: "#000",
     shadowOpacity: 0.05,
@@ -126,9 +126,9 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   insightContent: {
-    padding: 16, // Đưa padding vào đây thay vì bọc ngoài
+    padding: 16,
     flex: 1, 
-    minHeight: 120, // Đảm bảo card có độ cao cố định
+    minHeight: 120,
   },
   iconBox: { width: 44, height: 44, borderRadius: 12, justifyContent: "center", alignItems: "center", marginBottom: 10, overflow: "hidden" },
   insightBg: { position: "absolute", width: "100%", height: "100%", resizeMode: "cover" },

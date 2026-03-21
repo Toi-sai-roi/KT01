@@ -15,7 +15,6 @@ export default function ScanScreen() {
   const router = useRouter();
   const { addToCart } = useCart();
 
-  // Nếu được navigate với productId → dùng luôn, không thì random simulate scan
   const [currentProduct, setCurrentProduct] = useState(
     PRODUCTS.find((p) => p.id === productId) ?? PRODUCTS[0]
   );
@@ -28,7 +27,7 @@ export default function ScanScreen() {
     }
   }, [productId]);
 
-  // Animation nhẹ cho scan line
+  // Animation
   const scanAnim = useRef(new Animated.Value(0)).current;
   useEffect(() => {
     const loop = Animated.loop(
