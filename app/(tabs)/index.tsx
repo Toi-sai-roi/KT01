@@ -45,14 +45,13 @@ export default function HomeScreen() {
       <Text style={styles.sectionTitle}>Your Insights</Text>
       <View style={styles.grid}>
         {INSIGHTS.map((item) => (
+          <View key={item.label} style={styles.insightCard}>
           <ImageBackground
-            key={item.label}
             source={item.cardBg}
-            style={styles.insightCard}
-            imageStyle={{ borderRadius: 16 }}
+            style={{ flex: 1 }} // Để ảnh nền phủ kín card
           >
             <TouchableOpacity
-              style={{ flex: 1 }}
+              style={styles.insightContent} // Style mới có padding
               onPress={() => handleInsightPress(item.label)}
               activeOpacity={0.75}
             >
@@ -60,10 +59,12 @@ export default function HomeScreen() {
                 {item.bg && <Image source={item.bg} style={styles.insightBg} />}
                 <Image source={item.icon} style={styles.insightIcon} />
               </View>
+              
               <Text style={styles.insightLabel}>{item.label}</Text>
               <Text style={styles.insightSub}>{item.sub}</Text>
             </TouchableOpacity>
           </ImageBackground>
+        </View>
         ))}
       </View>
 
@@ -105,17 +106,29 @@ const styles = StyleSheet.create({
   sectionTitle: { fontSize: 17, fontWeight: "600", marginBottom: 14 },
   sectionRow: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginBottom: 14, marginTop: 10 },
 
-  grid: { flexDirection: "row", flexWrap: "wrap", justifyContent: "space-between", gap: 12 },
+  grid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-between", // Quay lại dùng cái này để dạt đều 2 mép
+    width: "100%",
+  },
   insightCard: {
-    width: (width - 52) / 2,
-    backgroundColor: "#fff",
+    width: "48%", // Đảm bảo 2 card cộng lại < 100% để không bị nhảy hàng
+    marginBottom: 15,
     borderRadius: 16,
-    padding: 16,
-    elevation: 2,
+    overflow: "hidden", // Để bo góc cho cả ảnh nền
+    // Shadow cho iOS
     shadowColor: "#000",
     shadowOpacity: 0.05,
-    shadowRadius: 6,
-    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 10,
+    shadowOffset: { width: 0, height: 4 },
+    // Shadow cho Android
+    elevation: 3,
+  },
+  insightContent: {
+    padding: 16, // Đưa padding vào đây thay vì bọc ngoài
+    flex: 1, 
+    minHeight: 120, // Đảm bảo card có độ cao cố định
   },
   iconBox: { width: 44, height: 44, borderRadius: 12, justifyContent: "center", alignItems: "center", marginBottom: 10, overflow: "hidden" },
   insightBg: { position: "absolute", width: "100%", height: "100%", resizeMode: "cover" },
