@@ -36,7 +36,7 @@ export default function HomeScreen() {
           <Text style={styles.username}>Christie Doe</Text>
         </View>
         <Image
-          source={{ uri: "https://i.pravatar.cc/100?img=47" }}
+          source={require("../../assets/scr-sh/avatar.png")}
           style={styles.avatar}
         />
       </View>
